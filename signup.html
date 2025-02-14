@@ -1,0 +1,66 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Créer un compte</h2>
+        <!-- Zone pour afficher le message -->
+        <div id="message" class="message"></div>
+
+        <form id="signup-form">
+            <div class="input-group">
+                <label for="new-username">Nom d'utilisateur</label>
+                <input type="text" id="new-username" required>
+            </div>
+            <div class="input-group">
+                <label for="new-password">Mot de passe</label>
+                <input type="password" id="new-password" required>
+            </div>
+            <button class="signup-button" type="submit">Créer un compte</button>
+        </form>
+        <p>Vous avez déjà un compte ? <a href="index.html">Se connecter</a></p>
+    </div>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('new-username').value;
+            const password = document.getElementById('new-password').value;
+
+            // Vérifier si l'utilisateur existe déjà
+            const messageElement = document.getElementById('message');
+            if (localStorage.getItem(username)) {
+                // Si le nom d'utilisateur existe déjà, afficher un message rouge
+                messageElement.textContent = "Nom d'utilisateur déjà pris.";
+                messageElement.style.color = "red";
+                return;
+            }
+
+            // Enregistrer l'utilisateur dans localStorage
+            localStorage.setItem(username, password);
+            // Marquer l'utilisateur comme étant connecté immédiatement après l'inscription
+            localStorage.setItem("loggedInUser", username);
+
+            // Afficher un message bleu pour le succès de la création du compte
+            messageElement.textContent = "Compte créé avec succès !";
+            messageElement.style.color = "blue";
+
+            // Rediriger vers la page de bienvenue
+            alert("Compte crée avec succes!")
+            window.location.href = "index.html";
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+/* assets/style.css */
+
+/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the form */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Title */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Input styles */
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Password input container */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#password {
+    flex: 1; /* Take all available space */
+}
+
+#toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Buttons styles */
+
+.connect-button {
+    width: 100%;
+    padding: 10px 20px;              /* Ajoute de l'espace à l'intérieur du bouton */
+    font-size: 16px;                 /* Taille de la police */
+    background-color: #46b94a;       /* Couleur de fond verte */
+    color: white;                    /* Couleur du texte en blanc */
+    border: none;                    /* Enlève la bordure par défaut */
+    border-radius: 5px;              /* Arrondit les coins du bouton */
+    cursor: pointer;                 /* Change le curseur pour indiquer que c'est cliquable */
+    transition: background-color 0.3s; /* Ajoute un effet lors du survol */
+}
+.connect-button:hover {
+    background-color: #3c8d3f;
+}
+
+.signup-button {
+    width: 100%;
+    padding: 10px 20px;              /* Ajoute de l'espace à l'intérieur du bouton */
+    font-size: 16px;                 /* Taille de la police */
+    background-color: #1a9cf3;       /* Couleur de fond verte */
+    color: white;                    /* Couleur du texte en blanc */
+    border: none;                    /* Enlève la bordure par défaut */
+    border-radius: 5px;              /* Arrondit les coins du bouton */
+    cursor: pointer;                 /* Change le curseur pour indiquer que c'est cliquable */
+    transition: background-color 0.3s; /* Ajoute un effet lors du survol */
+}
+.signup-button:hover {
+    background-color: #38aaf7;
+}
+
+.chat-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2f87eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.logout-button {
+    margin-top: 5px;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.logout-button:hover {
+    background-color: #45a049;
+}
+
+.chat-button:hover {
+    background-color: #2582ce;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Page footer styles */
+p {
+    text-align: center;
+    color: #777;
+}
+
+/* Styles for messages (success or error) */
+.message {
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}

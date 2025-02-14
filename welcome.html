@@ -1,0 +1,42 @@
+<!-- welcome.html -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Bienvenue !</h2>
+        <p>Vous êtes maintenant connecté. Profitez de votre session !</p>
+        <button class="chat-button" onclick="chat()">Acceder à la discussion</button>
+        <button class="logout-button" onclick="logout()">Se déconnecter</button>
+    </div>
+
+    <script>
+        // Vérifier si l'utilisateur est bien connecté
+        if (!localStorage.getItem("loggedInUser")) {
+            // Si non, rediriger vers la page de connexion
+            window.location.href = "index.html";
+        }
+
+        function logout() {
+            // Supprime les données d'authentification et déconnecte l'utilisateur
+            localStorage.removeItem("loggedInUser");
+            window.location.href = "index.html"; // Rediriger vers la page de connexion
+        }
+
+        function chat() {
+            window.location.href = "chatbox.html";
+        }
+
+    </script>
+
+</body>
+
+</html>

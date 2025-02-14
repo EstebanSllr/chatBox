@@ -1,0 +1,59 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se connecter</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Se connecter</h2>
+        <!-- Zone pour afficher le message -->
+        <div id="message" class="message"></div>
+
+        <form id="login-form">
+            <div class="input-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" required>
+            </div>
+            <button class="connect-button" type="submit">Se connecter</button>
+        </form>
+        <p>Pas encore de compte ? <a href="signup.html">Créer un compte</a></p>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Vérifier si l'utilisateur existe dans localStorage
+            const storedPassword = localStorage.getItem(username);
+
+            // Gérer l'affichage du message
+            const messageElement = document.getElementById('message');
+            if (storedPassword && storedPassword === password) {
+                // Connexion réussie, redirection vers la page de bienvenue
+                localStorage.setItem("loggedInUser", username);  // Stockage de l'utilisateur connecté
+                window.location.href = "welcome.html";
+            } else {
+                // Afficher un message d'erreur en rouge
+                messageElement.textContent = "Nom d'utilisateur ou mot de passe incorrect";
+                messageElement.style.color = "red";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

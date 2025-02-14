@@ -1,0 +1,90 @@
+<!-- chatbox.html -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Discussion en ligne</title>
+    <link rel="stylesheet" href="assets/style2.css">
+</head>
+
+<body>
+    <div class="back-button-container">
+        <button class="back-button" onclick="back()">Back</button>
+    </div>
+        <div class="chat-container">
+            <div id="chat-box" class="chat-box"></div> <!-- Zone d'affichage des messages -->
+
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Votre message..." />
+                <button class="send-button" id="send-btn">Envoyer</button>
+            </div>
+        </div>
+
+    <script>
+        function back() {
+            // Supprime les données d'authentification et déconnecte l'utilisateur
+            window.location.href = "welcome.html"; // Rediriger vers la page de connexion
+        }
+        // Vérification de l'utilisateur connecté depuis localStorage
+        const loggedInUser = localStorage.getItem("loggedInUser");
+
+        if (!loggedInUser) {
+            window.location.href = "index.html"; // Si pas connecté, rediriger vers la page de connexion
+        }
+
+        // Affichage de la liste des messages stockés
+        const chatBox = document.getElementById("chat-box");
+
+        // Fonction pour afficher un message dans la chatbox
+        function addMessage(message, username) {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("chat-message");
+
+            // Affichage du pseudo
+            const userDiv = document.createElement("div");
+            userDiv.classList.add("user-name");
+            userDiv.textContent = username;
+
+            // Affichage du message
+            const messageContent = document.createElement("div");
+            messageContent.classList.add("message-content");
+            messageContent.textContent = message;
+
+            messageDiv.appendChild(userDiv);
+            messageDiv.appendChild(messageContent);
+
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;  // Faites défiler vers le bas
+        }
+
+        // Fonction pour envoyer un message
+        document.getElementById("send-btn").addEventListener("click", function () {
+            const messageInput = document.getElementById("message-input");
+            const message = messageInput.value.trim();
+
+            if (message) {
+                // Ajouter le message dans la chatbox
+                addMessage(message, loggedInUser);
+
+                // Stocker le message dans localStorage (enregistrer les messages de la session)
+                const messages = JSON.parse(localStorage.getItem("chatMessages") || "[]");
+                messages.push({ username: loggedInUser, message: message });
+                localStorage.setItem("chatMessages", JSON.stringify(messages));
+
+                // Effacer le champ de message
+                messageInput.value = "";
+            }
+        });
+
+        // Chargement des messages précédents depuis localStorage
+        const messages = JSON.parse(localStorage.getItem("chatMessages") || "[]");
+        messages.forEach(msg => {
+            addMessage(msg.message, msg.username);
+        });
+    </script>
+
+</body>
+
+</html>

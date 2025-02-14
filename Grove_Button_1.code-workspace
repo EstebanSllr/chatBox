@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../Downloads/R1/Grove_Button_1"
+		},
+		{
+			"path": "../../Downloads/R1/Grove_LED_1"
+		},
+		{
+			"path": "../../Downloads/R1/Grove_Rotary_Angle_Sensor_1"
+		},
+		{
+			"path": "../../Downloads/R1/libraries"
+		}
+	]
+}
